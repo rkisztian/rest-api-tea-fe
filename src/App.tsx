@@ -77,6 +77,7 @@ class App extends Component<{}, State> {
   render(){
     const { newTeaTipus, newTeaIze, newTeaAra} = this.state;
     return <div className='container'>
+      <h2 className='center'>Új Tea felvétel</h2>
       <div className='row'>
           <div className='col-lg-4'>
             Tea Tipusa:<input type='text' value={newTeaTipus} onChange={e => this.setState({ newTeaTipus: e.currentTarget.value})}/><br/>
@@ -88,14 +89,17 @@ class App extends Component<{}, State> {
             Tea ára:<input type='number' value={newTeaAra} onChange={e =>  this.setState({newTeaAra: parseInt(e.currentTarget.value)})}/><br/>
           </div>
       </div>
-      <button onClick={this.newTea} className='btn btn-primary'>Tea felvétele</button>
-
+      <div className=''>
+        <button onClick={this.newTea} className='btn btn-primary'>Tea felvétele</button>
+      </div>
+      
       <br/>
       <div className='container'>
-        <h2>Teák listája</h2>
-        <table>
-        <div>{this.state.teak.map(teak =><tbody><tr><td><th>Típus</th> {teak.tipus}</td> <td><th>Íz</th> {teak.iz}</td> <td><th>Ár</th> {teak.ar}</td></tr> 
-        <button onClick={(event) => this.teaDelete(teak.id)} className='btn btn-danger'>Törlés</button> <hr /> </tbody>)}</div>
+        <h3>Teák listája</h3>
+        <table className='table'>
+              {this.state.teak.map(teak =><tbody><tr><td><th>Típus</th> {teak.tipus}</td> <td><th>Íz</th> {teak.iz}</td> <td><th>Ár</th> {teak.ar}</td>
+              <th><button onClick={(event) => this.teaDelete(teak.id)} className='btn btn-danger'>Törlés</button></th></tr> 
+               </tbody>)}
         </table>
       </div>
     </div>
